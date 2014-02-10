@@ -19,8 +19,8 @@ p
   = raw post.body
 
 h3
-  = "Comments (#{post.comments_count})"
+  = "Comments"
 #comments
-  = render post.comments
-
+  = render post.comments.not_declined
+= render 'comments/comment_errors'
 = render 'comments/new_comment'

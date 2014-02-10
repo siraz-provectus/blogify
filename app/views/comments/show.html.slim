@@ -1,18 +1,11 @@
-p#notice = notice
-
 p
-  strong User:
-  = @comment.user
-p
-  strong Post:
-  = @comment.post
+  strong User Name:
+  = comment.decorate.user_full_name
 p
   strong Body:
-  = @comment.body
+  = comment.body
 p
   strong Status:
-  = @comment.status
+  = comment.status
 
-= link_to 'Edit', edit_comment_path(@comment)
-'|
 = link_to 'Back', comments_path
