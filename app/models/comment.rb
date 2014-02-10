@@ -16,4 +16,11 @@ class Comment < ActiveRecord::Base
   validates :status, 
             presence: true,
             inclusion: { in: STATUSES }
+  scope :not_declined, -> {
+    where.not(status: 'declined')
+  }
+
+  scope :pending, -> {
+    where(status: 'pending')
+  }
 end

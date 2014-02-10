@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
  
-  expose :comments
+  expose (:comments) {Comment.pending}
   expose :comment, attributes: :comment_params
 
   def index
@@ -16,21 +16,20 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment.save
-    puts comment.errors.messages
+    if user_signed_in?
+      comment.save
+    else
+      comment.valid?
+      comment.save if verify_recaptcha(:model => comment, :message => "Please enter the correct captcha!")
+    end 
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to @comment, notice: 'Comment was successfully updated.'
-    else
-      render action: 'edit'
-    end
+    comment.update(comment_params)
   end
 
   def destroy
-    @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    comment.destroy
   end
 
   private
