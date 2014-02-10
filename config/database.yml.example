@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: blogify_development
+  pool: 5
+  username: postgres
+  password:
+  port: 5432
+  host: localhost
+  min_messages: WARNING
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: blogify_test
+  pool: 5
+  username: postgres
+  password:
+  port: 5432
+  host: localhost
+  min_messages: WARNING
