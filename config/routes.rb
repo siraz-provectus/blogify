@@ -12,7 +12,11 @@ Blogify::Application.routes.draw do
     end
   end
   resources :comments
-  resources :posts
+  resources :posts do
+    collection do
+      get :load
+    end
+  end
 
   resources :tags, only: [] do
     collection do

@@ -16,6 +16,7 @@
 //= require jquery.ui.widget
 //= require jquery.ui.effect.all
 //= require jquery.ui.autocomplete
+//= require jquery.infinitescroll.min.js
 //= require bootstrap
 //= require ckeditor/init
 //= require tag-it.js

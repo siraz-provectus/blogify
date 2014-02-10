@@ -45,6 +45,9 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def load
+  end
+  
   private
 
   def post_params

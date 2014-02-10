@@ -1,23 +1,24 @@
-= render 'list_actions', post: post
+li.b-post
+  = render 'list_actions', post: post
 
-p
-  h4 = link_to post.title, post
+  p
+    h4 = link_to post.title, post
 
-p
-  = post.decorate.published_at
-  = post.decorate.comments_count
+  p
+    = post.decorate.published_at
+    = post.decorate.comments_count
 
-p
-  strong 
-    = post.category.decorate.title
+  p
+    strong 
+      = post.category.decorate.title
 
-p
-  = truncate_html(post.body, length: 300, omission: '...')
+  p
+    = truncate_html(post.body, length: 300, omission: '...')
 
-p
-  strong Tags:
-  - post.tags.each do |tag|
-    = link_to tag.name, 
-              root_path(search: { tag_list: tag.name} ), 
-              class: 'linked_tag'
-hr.separator
+  p
+    strong Tags:
+    - post.tags.each do |tag|
+      = link_to tag.name, 
+                root_path(search: { tag_list: tag.name} ), 
+                class: 'linked_tag'
+  hr.separator

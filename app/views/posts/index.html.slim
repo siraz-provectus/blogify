@@ -6,9 +6,14 @@
     = render 'search_form'
     - if policy(Post.new).can_manage?
       = link_to 'New Post', new_post_path, class: 'btn btn-primary'
-    = render posts
+    ul#b-feeds__container
+      = render posts
+    - if posts.total_pages > posts.current_page
+      nav#page-nav
+        = link_to '', load_posts_url(page: posts.current_page + 1)
 
 .clearfix
 
 = content_for(:javascript_code) do
-  | PostsSearch.init()
+  | PostsSearch.init();
+  | ObjectLoad.pagination();
