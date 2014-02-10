@@ -1,0 +1,9 @@
+strong
+  = category.title
+.clearfix
+- if category.children.present?
+  - category.children.each do |sub_category|
+    strong.subcategory
+      = link_to sub_category.title, 
+                posts_path(category: sub_category.title)
+    .clearfix

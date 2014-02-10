@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+
+	STATUSES = %w(pending approved declined)
+
   belongs_to :user
   belongs_to :post
 
@@ -9,4 +12,8 @@ class Comment < ActiveRecord::Base
   validates :body,
             presence: true,
             length: { maximum: 1000 }
+            
+  validates :status, 
+            presence: true,
+            inclusion: { in: STATUSES }
 end

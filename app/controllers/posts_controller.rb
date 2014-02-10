@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  expose(:categories) {
+    Category.roots
+  }
   expose :posts
   expose :post, attributes: :post_params
 

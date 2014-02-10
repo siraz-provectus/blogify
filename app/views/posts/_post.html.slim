@@ -1,25 +1,21 @@
+= render 'list_actions', post: post
+
 p
-  = link_to post.title, post
+  h4 = link_to post.title, post
 
 p
   = post.decorate.published_at
   = post.decorate.comments_count
 
 p
-  strong Category:
-  = post.category.decorate.title
+  strong 
+    = post.category.decorate.title
+
+p
+  = truncate_html(post.body, length: 300, omission: '...')
 
 p
   strong Tags:
   = post.tag_list
 
-p
-  = truncate_html(post.body, length: 150, omission: '...')
-
-- if policy(Post.new).can_manage?
-  .pull-left
-    = link_to 'Edit', edit_post_path(post), class: 'btn btn-warning'
-    = link_to 'Destroy', 
-              post, 
-              data: { confirm: 'Are you sure?' }, 
-              method: :delete
+hr.separator

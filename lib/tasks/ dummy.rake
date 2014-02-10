@@ -14,6 +14,7 @@ class SeedDummyData
       add_categories!
       add_tags!
       add_admin!
+      add_users!
       add_posts!
     end
 
@@ -57,6 +58,23 @@ class SeedDummyData
       end
     end
 
+     def add_users!
+      10.times do |i|
+        unless User.exists?(email: "test_#{i + 1}@example.com")
+          user = User.new(
+            first_name: Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            email: "test_#{i + 1}@example.com",
+            password: 'aaaaaaaa',
+            password_confirmation: 'aaaaaaaa'
+          )
+
+          user.save(validate: false)
+          user.confirm!
+        end
+      end
+    end
+
     def add_posts!
       30.times do |i|
         post = Post.create(
@@ -65,7 +83,23 @@ class SeedDummyData
           tag_list: random_tags,
           category: random_category
         )
+
+        add_comments!(post)
       end
+    end
+
+    def add_comments!(post)
+      4.times do
+        post.comments.create!(
+          user: random_commenter,
+          body: Faker::Lorem.sentences(3).join('/n'),
+          status: 'approved'
+        )
+      end
+    end
+
+    def random_commenter
+      User.order("RANDOM()").first
     end
 
     def random_category

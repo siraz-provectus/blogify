@@ -1,0 +1,8 @@
+- if policy(Post.new).can_manage?
+  .pull-right
+    = link_to 'Edit', edit_post_path(post), class: 'btn btn-warning'
+    = link_to 'Destroy', 
+              post, 
+              data: { confirm: 'Are you sure?' }, 
+              method: :delete,
+              class: 'btn btn-danger'
