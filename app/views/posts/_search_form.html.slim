@@ -12,3 +12,9 @@
     = text_field_tag "search[full_text]", 
                  params[:search].present? ? params[:search][:full_text] : '', 
                  class: 'form-control'
+
+    = label_tag "By Tags"
+    .tag_autocomplete_block
+      = hidden_field_tag "search[tag_list]",
+                         params[:search].present? ? params[:search][:tag_list] : ''
+      ul.tag_variants#tags_list

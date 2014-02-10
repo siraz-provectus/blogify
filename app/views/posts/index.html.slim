@@ -9,3 +9,6 @@
     = render posts
 
 .clearfix
+
+= content_for(:javascript_code) do
+  | PostsSearch.init()
