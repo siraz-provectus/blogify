@@ -14,6 +14,7 @@ gem "kaminari"
 gem 'bootstrap-kaminari-views'
 gem "searchlight"
 gem 'ancestry'
+gem 'acts-as-taggable-on'
 
 gem "sass-rails", "~> 4.0.0"
 gem "coffee-rails", "~> 4.0.0"

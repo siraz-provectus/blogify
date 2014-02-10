@@ -1,4 +1,5 @@
 require 'yaml'
+require 'csv'
 
 namespace :db do
   desc "Add system data"
@@ -11,6 +12,7 @@ class SeedDummyData
   class << self
     def run
       add_categories!
+      add_tags!
     end
 
     def add_categories!
@@ -31,6 +33,12 @@ class SeedDummyData
             end
           end
         end
+      end
+    end
+
+    def add_tags!
+      CSV.open("#{Rails.root}/lib/tasks/data/tags.csv", 'r').each do |row|
+        ActsAsTaggableOn::Tag.find_or_create_by_name row[0]
       end
     end
   end
