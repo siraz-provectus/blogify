@@ -1,0 +1,6 @@
+- provide(:page_header, 'New Post')
+
+= render 'form'
+
+= content_for(:javascript_code) do
+  | PostsManagement.init()

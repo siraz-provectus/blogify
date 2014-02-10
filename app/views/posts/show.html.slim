@@ -1,0 +1,20 @@
+- provide(:page_header) do
+  = post.title
+  - if policy(post).can_manage?
+    = render 'actions'
+
+p
+  = post.decorate.published_at
+  = post.decorate.comments_count
+
+p
+  strong Category:
+  = post.category.decorate.title
+
+p
+  = post.body
+
+h3
+  = "Comments (#{post.comments_count})"
+#comments
+  = render post.comments

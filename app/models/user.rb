@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
 
   validates :terms_of_service, 
             acceptance: true 
+
+  has_many :comments, dependent: :destroy
 end

@@ -13,6 +13,7 @@ class SeedDummyData
     def run
       add_categories!
       add_tags!
+      add_admin!
     end
 
     def add_categories!
@@ -39,6 +40,19 @@ class SeedDummyData
     def add_tags!
       CSV.open("#{Rails.root}/lib/tasks/data/tags.csv", 'r').each do |row|
         ActsAsTaggableOn::Tag.find_or_create_by_name row[0]
+      end
+    end
+
+    def add_admin!
+      unless User.exists?(email: 'admin@example.com')
+        admin = User.new(
+          email: 'admin@example.com',
+          password: 'aaaaaaaa',
+          password_confirmation: 'aaaaaaaa'
+        )
+        admin.save(validate: false)
+        admin.confirm!
+        admin.toggle!(:admin)
       end
     end
   end

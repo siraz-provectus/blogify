@@ -9,7 +9,7 @@ table
     th
     th
 
-  - @posts.each do |post|
+  - posts.each do |post|
     tr
       td = post.category
       td = post.title
@@ -20,4 +20,5 @@ table
 
 br
 
-= link_to 'New Post', new_post_path
+- if policy(Post.new).can_manage?
+  = link_to 'New Post', new_post_path

@@ -1,0 +1,22 @@
+= simple_form_for post do |f|
+  = f.error_notification
+  .form-inputs
+    = label_tag :parent_category_id do
+      abbr title="required" *
+      | Category
+    = select_tag :parent_category_id,
+                 options_from_collection_for_select(Category.roots, :id, :title),
+                 { class: 'form-control', include_blank: true, required: :required }           
+    #subcategories
+    = f.input :title, 
+              required: true,  
+              input_html: { class: 'form-control' }
+    = f.input :body,
+              as: :text, 
+              required: true,  
+              input_html: { class: 'form-control' }
+  br  
+  .form-actions
+    = f.button :submit, 
+               "Save", 
+               class: 'btn btn-primary btn-lg'

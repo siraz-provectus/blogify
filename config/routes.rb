@@ -6,7 +6,11 @@ Blogify::Application.routes.draw do
     resources :settings, only: [ :edit, :update ]
   end
   
-  resources :categories
+  resources :categories do
+    member do
+      get :load_subcategories
+    end
+  end
   resources :comments
   resources :posts
 
