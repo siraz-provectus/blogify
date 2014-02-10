@@ -14,5 +14,11 @@ Blogify::Application.routes.draw do
   resources :comments
   resources :posts
 
+  resources :tags, only: [] do
+    collection do
+      get :autocomplete
+    end
+  end 
+
   root 'posts#index'
 end

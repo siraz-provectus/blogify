@@ -26,6 +26,7 @@
       abbr title="required" *
       | Body
     = f.cktext_area :body
+    = render 'tags', f: f
   br  
   .form-actions
     = f.button :submit, 

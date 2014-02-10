@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.widget
+//= require jquery.ui.effect.all
+//= require jquery.ui.autocomplete
 //= require bootstrap
 //= require ckeditor/init
+//= require tag-it.js
 //= require_tree ./custom

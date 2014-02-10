@@ -42,7 +42,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :category_id, 
       :title, 
-      :body
+      :body,
+      :tag_list
     )
   end
 end
