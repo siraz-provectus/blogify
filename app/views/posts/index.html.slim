@@ -3,6 +3,7 @@
     h3 Categories
     = render categories
   .col-md-9
+    = render 'search_form'
     - if policy(Post.new).can_manage?
       = link_to 'New Post', new_post_path, class: 'btn btn-primary'
     = render posts

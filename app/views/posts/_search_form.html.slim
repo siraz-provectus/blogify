@@ -1,0 +1,10 @@
+.row.well
+  h4 Search
+
+  = form_tag root_url, method: :get do
+    = submit_tag "Search", 
+                 class: 'btn btn-primary pull-right'  
+    = label_tag 'Text'
+    = text_field_tag "search[full_text]", 
+                 params[:search].present? ? params[:search][:full_text] : '', 
+                 class: 'form-control'

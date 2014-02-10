@@ -2,8 +2,8 @@ class Post < ActiveRecord::Base
 
   paginates_per 10
 
-	acts_as_taggable
-	
+  acts_as_taggable
+
   belongs_to :category
 
   has_many :comments, dependent: :destroy
@@ -18,15 +18,16 @@ class Post < ActiveRecord::Base
             presence: true,
             length: { maximum: 5000 }
 
+
   scope :by_category_id, -> (category_id) {
     where(category_id: category_id)
   }
   scope :by_tag_list, -> (tag_list) {
     tagged_with(tag_list.split(','), on: :tags, any: true)
   }
-
   scope :by_full_text, -> (full_text) {
-    where("lower(title) LIKE ? OR lower(body) LIKE ?", "%#{full_text}%", "%#{full_text}%")
+    where("lower(title) LIKE ? OR lower(body) LIKE ?", 
+      "%#{full_text.mb_chars.downcase}%", "%#{full_text.mb_chars.downcase}%")
   }
   scope :by_date, -> (start_date, end_date) {
     where("created_at BETWEEN ? AND ?", start_date, end_date)
