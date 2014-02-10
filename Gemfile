@@ -16,6 +16,7 @@ gem "searchlight"
 gem 'ancestry'
 gem 'acts-as-taggable-on'
 gem 'ckeditor'
+gem 'truncate_html'
 
 gem "sass-rails", "~> 4.0.0"
 gem "coffee-rails", "~> 4.0.0"

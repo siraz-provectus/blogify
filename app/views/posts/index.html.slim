@@ -1,24 +1,12 @@
-h1 Listing posts
+- provide(:page_header, 'Blog')
 
-table
-  tr
-    th Category
-    th Title
-    th Body
-    th
-    th
-    th
+.row
+  .col-md-3
+    h2 Categories
+  .col-md-9
+    = render posts
 
-  - posts.each do |post|
-    tr
-      td = post.category
-      td = post.title
-      td = post.body
-      td = link_to 'Show', post
-      td = link_to 'Edit', edit_post_path(post)
-      td = link_to 'Destroy', post, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
+.clearfix
 
 - if policy(Post.new).can_manage?
   = link_to 'New Post', new_post_path

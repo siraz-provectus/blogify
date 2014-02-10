@@ -14,6 +14,7 @@ class SeedDummyData
       add_categories!
       add_tags!
       add_admin!
+      add_posts!
     end
 
     def add_categories!
@@ -54,6 +55,25 @@ class SeedDummyData
         admin.confirm!
         admin.toggle!(:admin)
       end
+    end
+
+    def add_posts!
+      30.times do |i|
+        post = Post.create(
+          title: Faker::Lorem.paragraph,
+          body: Faker::Lorem.sentences(50).join('/n'),
+          tag_list: random_tags,
+          category: random_category
+        )
+      end
+    end
+
+    def random_category
+      Category.where.not(ancestry: nil).order("RANDOM()").first
+    end
+
+    def random_tags
+      ActsAsTaggableOn::Tag.order('RANDOM()').limit(4).pluck(:name).join(',')
     end
   end
 end
