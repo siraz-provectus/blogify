@@ -5,9 +5,15 @@
       abbr title="required" *
       | Category
     = select_tag :parent_category_id,
-                 options_from_collection_for_select(Category.roots, :id, :title),
+                 options_from_collection_for_select(Category.roots, :id, :title, 
+                   selected: post.new_record? ? '' : post.category.parent.id),
                  { class: 'form-control', include_blank: true, required: :required }           
     #subcategories
+      - unless post.new_record?
+        = render 'categories/subcategories',
+                 subcategories: post.category.parent.children,
+                 selected_id: post.category.id
+
     = f.input :title, 
               required: true,  
               input_html: { class: 'form-control' }

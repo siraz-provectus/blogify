@@ -1,7 +1,6 @@
-h1 Editing category
+- provide(:page_header, 'Edit Post')
 
-== render 'form'
+= render 'form'
 
-= link_to 'Show', @category
-'|
-= link_to 'Back', categories_path
+= content_for(:javascript_code) do
+  | PostsManagement.init()
