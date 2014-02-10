@@ -4,6 +4,9 @@ html
     title= content_for?(:title) ? yield(:title) : 'Blogify'
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
+    = javascript_include_tag 'application', media: 'all'
+    = javascript_tag "$(function() { #{yield(:javascript_code)} });" if content_for? :javascript_code
+    
   body
     .container
       = render 'layout_components/header'
@@ -11,5 +14,4 @@ html
       .footer
         p © Blogify 2013
 
-    = javascript_include_tag 'application', media: 'all'
-    = javascript_tag "$(function() { #{yield(:javascript_code)} });" if content_for? :javascript_code
+    
