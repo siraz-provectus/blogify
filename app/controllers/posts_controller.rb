@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   expose(:categories) {
     Category.roots
   }
-  expose :posts
+  expose(:search) {
+    PostSearch.new(search_params)
+  }
+  expose(:posts) {
+    search.results.page(params[:page])
+  }
   expose :post, attributes: :post_params
 
   def index
@@ -49,4 +54,8 @@ class PostsController < ApplicationController
       :tag_list
     )
   end
+
+  def search_params
+    params[:search]
+  end  
 end

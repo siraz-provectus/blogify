@@ -16,6 +16,8 @@ p
 
 p
   strong Tags:
-  = post.tag_list
-
+  - post.tags.each do |tag|
+    = link_to tag.name, 
+              posts_path(tag_list: tag.name), 
+              class: 'linked_tag'
 hr.separator
