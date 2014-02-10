@@ -5,5 +5,5 @@ strong
   - category.children.each do |sub_category|
     strong.subcategory
       = link_to sub_category.title, 
-                posts_path(category: sub_category.title)
+                posts_path(search: { category_id: sub_category.id })
     .clearfix

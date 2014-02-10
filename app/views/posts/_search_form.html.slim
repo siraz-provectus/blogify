@@ -1,7 +1,11 @@
 .row.well
-  h4 Search
+  h4
+    | Search
+    = "(#{posts.count} found)" if params[:search]
 
   = form_tag root_url, method: :get do
+    = hidden_field_tag "search[category_id]", 
+                       params[:search].present? ? params[:search][:category_id] : ''
     = submit_tag "Search", 
                  class: 'btn btn-primary pull-right'  
     = label_tag 'Text'
