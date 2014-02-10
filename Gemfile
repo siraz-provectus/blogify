@@ -19,6 +19,7 @@ gem 'acts-as-taggable-on'
 gem 'ckeditor'
 gem 'truncate_html'
 gem "pundit"
+gem "recaptcha", :require => "recaptcha/rails"
 
 gem "sass-rails", "~> 4.0.0"
 gem "coffee-rails", "~> 4.0.0"

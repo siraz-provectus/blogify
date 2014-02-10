@@ -1,0 +1,11 @@
+= form_tag comments_url, remote: true, method: :post do
+  .alert.alert-danger.hidden.js-comment_error
+    | Comments can not be empty
+  = hidden_field_tag "comment[user_id]", current_user ? current_user.id : nil
+  = hidden_field_tag "comment[post_id]", post.id
+  = hidden_field_tag "comment[status]", 'pending'
+  = label_tag "Comment"
+  br
+  = text_area_tag 'comment[body]',nil, class: 'pull-left date_range'
+  = submit_tag "Save", class: 'btn btn-primary btn-lg'
+              

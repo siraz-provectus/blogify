@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   expose(:search) {
     PostSearch.new(search_params)
   }
+  expose :comment
   expose(:posts) {
     search.results.page(params[:page])
   }
