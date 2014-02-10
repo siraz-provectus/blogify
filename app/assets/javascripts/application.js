@@ -19,4 +19,5 @@
 //= require bootstrap
 //= require ckeditor/init
 //= require tag-it.js
+//= require bootstrap-datepicker
 //= require_tree ./custom

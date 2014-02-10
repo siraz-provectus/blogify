@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
+gem 'heroku'
 gem 'unicorn'
 gem "foreman"
 
@@ -17,6 +18,7 @@ gem 'ancestry'
 gem 'acts-as-taggable-on'
 gem 'ckeditor'
 gem 'truncate_html'
+gem "pundit"
 
 gem "sass-rails", "~> 4.0.0"
 gem "coffee-rails", "~> 4.0.0"
@@ -25,17 +27,16 @@ gem "execjs"
 gem 'therubyracer', platforms: :ruby
 
 gem "bootstrap-sass", ">= 3.0.0.0"
+gem "slim-rails"
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem 'bootstrap-datepicker-rails', 
+  require: 'bootstrap-datepicker-rails',
+  git: 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 gem "draper"
 gem "decent_exposure", "~>2.3.0"
 gem "decent_decoration"
-
-gem "slim-rails"
-
-gem 'activerecord_any_of'
-gem "pundit"
 
 group :development do
   gem "better_errors"
@@ -61,6 +62,10 @@ group :development, :test do
   gem "quiet_assets"
   gem "pry-rails"
   gem "rspec-rails", "~> 2.14.0"
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 gem 'faker', group: [ :development, :staging, :cucumber, :test ]

@@ -1,6 +1,28 @@
 PostsSearch = window.PostsSearch =
   init: ->
     PostsSearch.tags()
+    PostsSearch.date_range()
+
+  date_range: ->
+    $("#from").datepicker
+      defaultDate: "+1w"
+      format: "dd/mm/yyyy"
+      language: "ru"
+      changeMonth: true
+      numberOfMonths: 3
+      onClose: (selectedDate) ->
+        $("#to").datepicker "option", "minDate", selectedDate
+        return
+
+    $("#to").datepicker
+      defaultDate: "+1w"
+      format: "dd/mm/yyyy"
+      language: "ru"
+      changeMonth: true
+      numberOfMonths: 3
+      onClose: (selectedDate) ->
+        $("#from").datepicker "option", "maxDate", selectedDate
+        return
 
   tags: ->
     $("#tags_list").tagit

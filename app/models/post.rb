@@ -29,7 +29,10 @@ class Post < ActiveRecord::Base
     where("lower(title) LIKE ? OR lower(body) LIKE ?", 
       "%#{full_text.mb_chars.downcase}%", "%#{full_text.mb_chars.downcase}%")
   }
-  scope :by_date, -> (start_date, end_date) {
-    where("created_at BETWEEN ? AND ?", start_date, end_date)
+  scope :after, -> (start_date) {
+    where("created_at >= ?", start_date)
   }
+  scope :before, -> (end_date) {
+    where("created_at <= ?", end_date)
+  }  
 end

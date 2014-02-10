@@ -7,7 +7,8 @@
     = hidden_field_tag "search[category_id]", 
                        params[:search].present? ? params[:search][:category_id] : ''
     = submit_tag "Search", 
-                 class: 'btn btn-primary pull-right'  
+                 class: 'btn btn-primary pull-right'
+    br 
     = label_tag 'Text'
     = text_field_tag "search[full_text]", 
                  params[:search].present? ? params[:search][:full_text] : '', 
@@ -18,3 +19,12 @@
       = hidden_field_tag "search[tag_list]",
                          params[:search].present? ? params[:search][:tag_list] : ''
       ul.tag_variants#tags_list
+
+    = label_tag 'Published Between'
+    .clearfix
+    = text_field_tag "search[start_date]", 
+                     params[:search].present? ? params[:search][:start_date] : '', 
+                     class: 'form-control date_range pull-left', id: 'from'
+    = text_field_tag "search[end_date]", 
+                     params[:search].present? ? params[:search][:end_date] : '', 
+                     class: 'form-control date_range', id: 'to'
