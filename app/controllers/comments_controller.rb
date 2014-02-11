@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
  
-  expose (:comments) {Comment.pending}
+  expose (:comments) {
+    Comment.pending.page(params[:page])
+  }
   expose :comment, attributes: :comment_params
 
   def index
@@ -13,6 +15,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def load
   end
 
   def create

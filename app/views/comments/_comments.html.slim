@@ -1,0 +1,20 @@
+- comments.each do |comment|
+  .col-md-12.bottom_margin.b-post{id='comment_#{comment.id}'}
+    .col-md-4
+      = truncate(comment.body, length: 45)
+    .col-md-2
+      = comment.status
+    .col-md-1.linked_tag
+      = form_tag comment_path(comment), remote: true, method: :patch do
+        = hidden_field_tag 'comment[status]', 'approved' 
+        = submit_tag "Approve",
+                      class: 'btn btn-primary btn-xs'
+    .col-md-1.linked_tag
+      = form_tag comment_path(comment), remote: true, method: :patch do
+        = hidden_field_tag 'comment[status]', 'declined' 
+        = submit_tag "Decline",
+                      class: 'btn btn-danger btn-xs'
+    .col-md-3              
+      = link_to 'Show', comment
+      '
+      = link_to 'Destroy', comment, data: {:confirm => 'Are you sure?'},remote: true, :method => :delete

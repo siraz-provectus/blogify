@@ -11,7 +11,13 @@ Blogify::Application.routes.draw do
       get :load_subcategories
     end
   end
-  resources :comments
+  
+  resources :comments do
+    collection do
+      get :load
+    end
+  end
+
   resources :posts do
     collection do
       get :load

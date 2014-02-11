@@ -2,7 +2,7 @@ $('#js-comment_errors').replaceWith("<%= escape_javascript(render(
     'comments/comment_errors'
   )) %>");
 <% unless comment.errors.any? %>
-	$('#comments').append("<%= escape_javascript(render(
+	$('#comments').prepend("<%= escape_javascript(render(
       'comments/comment'
     )) %>");
 <% end %>

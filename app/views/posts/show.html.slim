@@ -20,7 +20,10 @@ p
 
 h3
   = "Comments"
-#comments
-  = render post.comments.not_declined
 = render 'comments/comment_errors'
 = render 'comments/new_comment'
+
+.clearfix
+
+#comments
+  = render post.comments.not_declined

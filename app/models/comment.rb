@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
 
+  paginates_per 30
+
 	STATUSES = %w(pending approved declined)
 
   belongs_to :user
@@ -16,6 +18,9 @@ class Comment < ActiveRecord::Base
   validates :status, 
             presence: true,
             inclusion: { in: STATUSES }
+
+  default_scope { order('created_at DESC') }
+            
   scope :not_declined, -> {
     where.not(status: 'declined')
   }
