@@ -22,7 +22,7 @@ class Comment < ActiveRecord::Base
   default_scope { order('created_at DESC') }
             
   scope :not_declined, -> {
-    where.not(status: 'declined')
+    where.not(status: 'declined').includes(:user)
   }
 
   scope :pending, -> {

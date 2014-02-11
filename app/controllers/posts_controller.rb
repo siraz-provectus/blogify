@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     if post.save
       redirect_to post, notice: 'Post was successfully created.'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     if post.update(post_params)
       redirect_to post, notice: 'Post was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 

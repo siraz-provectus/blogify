@@ -7,14 +7,11 @@ class Users::SettingsController < Users::ProfileController
   def edit
   end
 
-  def availability_and_notifications
-  end
-
   def update
     if user.save
       redirect_to edit_users_setting_path, notice: 'Settings updated' 
     else
-      render action: "edit" 
+      render "edit" 
     end
   end
 

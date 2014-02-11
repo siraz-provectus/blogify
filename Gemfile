@@ -38,6 +38,7 @@ gem 'bootstrap-datepicker-rails',
 gem "draper"
 gem "decent_exposure", "~>2.3.0"
 gem "decent_decoration"
+gem 'rails_best_practices'
 
 group :development do
   gem "better_errors"
