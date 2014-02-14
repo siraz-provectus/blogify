@@ -10,6 +10,8 @@ html
   body
     .container
       = render 'layout_components/header'
+      = render 'layout_components/flash_messages'
+      = render 'layout_components/header_message'
       = yield
       .footer
         p © Blogify 2013
